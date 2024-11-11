@@ -94,40 +94,36 @@ button.continue:hover {
 }
 
 @media only screen and (max-device-width: 600px) {
-    /* Zmniejszenie rozmiaru logo */
     .logo img {
         width: 70vw;
-        height: auto; /* 40% szerokości ekranu */
+        height: auto;
         align-items: center;
         justify-content: center;
     }
 
-    /* Dostosowanie szerokości głównej sekcji i formularza */
     .main-section {
-        flex-direction: column; /* Ustawienie logo nad formularzem */
+        flex-direction: column;
         align-items: center;
         width: 90vw;
         padding: 1em;
     }
 
-    /* Zmniejszenie szerokości formularza */
     form {
-        width: 80%; /* Formularz zajmuje więcej miejsca na ekranie */
+        width: 80%;
     }
 
-    /* Dostosowanie rozmiarów przycisków i pól tekstowych */
+
     form > input, button.continue {
-        font-size: 3em; /* Zmniejszenie fontu */
+        font-size: 3em;
         margin: 0.5em 0;
         padding-left: 1em;
         line-height: 3em;
     }
 
-    /* Dostosowanie stylu linków w stopce */
     .footer-links {
         
         padding-top: 0.5em;
-        flex-direction: column; /* Linki jeden pod drugim */
+        flex-direction: column;
         align-items: center;
     }
 
