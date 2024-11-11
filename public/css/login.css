@@ -1,0 +1,134 @@
+body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* background: linear-gradient(179.3deg, #D79685 -51.16%, #D79888 -22.56%, #D9D9D9 55.12%, #D9D9D9 99.39%); */
+}
+
+.container {
+    background: linear-gradient(179.3deg, #D79685 -51.16%, #D79888 -22.56%, #D9D9D9 55.12%, #D9D9D9 99.39%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    padding: 3em;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2em;
+}
+
+.logo img {
+    height: 30vw;
+    margin-bottom: 5vw;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
+form > input {
+    margin: 0 0 1em 0;
+    padding-left: 1.5em;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(198, 173, 173, 0.715);
+    border-radius: 10px;
+    line-height: 3.5em;
+    border: none;
+    letter-spacing: 0.15em;
+    color: #431919;
+}
+
+button.continue {
+    margin: 0 0 1em 0;
+    padding-left: 1.5em;
+    background: #D79685;
+    box-shadow: 0px 2px 5px rgba(198, 173, 173, 0.715);
+    border-radius: 10px;
+    line-height: 3.5em;
+    border: none;
+    letter-spacing: 0.15em;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+button.continue:hover {
+    background: #431919;
+    box-shadow: 0px 4px 10px rgba(198, 173, 173, 0.9);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: medium;
+}
+
+.footer-links a {
+    color: #CD7D69;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #431919;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .logo img {
+        width: 70vw;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-section {
+        flex-direction: column;
+        align-items: center;
+        width: 90vw;
+        padding: 1em;
+    }
+
+    form {
+        width: 80%;
+    }
+
+
+    form > input, button.continue {
+        font-size: 3em;
+        margin: 0.5em 0;
+        padding-left: 1em;
+        line-height: 3em;
+    }
+
+    .footer-links {
+        
+        padding-top: 0.5em;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links a {
+        font-size: 2.5em;
+        margin: 0.5em 0;
+    }
+}
