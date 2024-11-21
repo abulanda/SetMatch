@@ -1,0 +1,160 @@
+body {
+    position: fixed;
+    top:0;
+    left:0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header-bar {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    left: 0px;
+    top: 0px;
+    background: #D79685;
+    display: flex;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    height: 100%;
+}
+
+
+.logo-section img {
+    height: 100%;
+    width: auto;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 5em;
+    margin-left: auto;
+    padding-right: 2em
+}
+
+.pictures {
+    height: 3em;
+    width: auto;
+}
+
+.logout-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 1em;
+    color: #d9d9d9;
+    margin-left: 0.5em;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button img {
+    height: 3em;
+    width: auto;
+}
+
+.layout {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-top: 10vh
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.side-panel {
+    width: 20%;
+    margin-top: 10vh;
+    height: calc(100vh - 10vh);
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.side-panel button {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #D79685;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+}
+
+.profile-details {
+    text-align: left;
+    width: 100%;
+    padding-left: 8em;
+}
+
+.profile-details p {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.2em;
+    color: #555555;
+    margin: 1.5em 0;
+    text-align: left;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1em;
+    align-items: stretch;
+    margin-top: auto;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+button {
+    width: 100%;
+    text-align: left;
+    padding: 2em 3em;
+    margin: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.my-teams-btn {
+    background-color: #B3B3B3;
+    color: #333333;
+}
+
+.create-team-btn {
+    background-color: #B3B3B3;
+    color: #333333;
+}

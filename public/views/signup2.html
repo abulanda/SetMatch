@@ -41,13 +41,16 @@
                     <option value="libero">Libero</option>
                 </select>
                 
-                <label for="profile-picture">Profile Picture:</label>
-                <input type="file" id="profile-picture" name="profile-picture" accept="image/*" class="file-input">
-                <button type="button" class="profile-picture">add profile picture</button>
-                
+                <div class="file-upload-container">
+                    <p>Profile picture:</p>
+                    <label for="profile-picture" class="custom-file-upload">Choose File</label>
+                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*" class="file-input">
+                    <span id="file-name">No file chosen</span> <!-- Tekst wyświetlający nazwę pliku -->
+                </div>
+
                 <button type="submit" class="continue-btn" formaction="home.html">continue</button>
             </form>
         </div>
     </div>
-</body> 
+</body>
 </html>
