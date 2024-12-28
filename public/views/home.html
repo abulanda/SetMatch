@@ -8,21 +8,21 @@
         <div class="header-bar">
             <div class="logo-section">
                 <img src="../img/logo2.svg" alt="SetMatch Logo" class="logo">
-            </div>
+            </div> 
             <div class="header-icons">
-                <button class="icon-button" onclick="openCalendar()">
+                <button class="icon-button" onclick="location.href='calendar.html'">
                     <img src="../img/calendar.svg" alt="calendar img" class="pictures">
                 </button>
-                <button class="icon-button" onclick="addNewItem()">
+                <button class="icon-button" onclick="location.href='addmatch.html'">
                     <img src="../img/add.svg" alt="plus img" class="pictures">
                 </button>
-                <button class="icon-button" onclick="openChat()">
+                <button class="icon-button" onclick="location.href='temp.html'">
                     <img src="../img/chat.svg" alt="chat img" class="pictures">
                 </button>
-                <button class="icon-button" onclick="searchItem()">
+                <button class="icon-button" onclick="location.href='temp.html'">
                     <img src="../img/magnifier.svg" alt="magnifier img" class="pictures">
                 </button>
-                <span class="logout-text" onclick="logout()">Log Out</span>
+                <span class="logout-text" onclick="location.href='login.html'">Log Out</span>
             </div>
             
         </div>
@@ -42,13 +42,72 @@
                     </div>
                 </div>
                 <div class="buttons-container">
-                    <button class="my-teams-btn">My teams</button>
-                    <button class="create-team-btn">Create a team!</button>
-                </div>
+                    <button type="button" class="create-team-btn" onclick="location.href='addteam1.html'">Create a team!</button>
+                    <button type="button" class="home-page-btn" onclick="location.href='home.html'">HOME</button>
+                </div>                
             </div>
             <div class="main-page">
+                <h2 class="main-header">They are looking for a player! <br>Take a look!</h2>
+                <div class="teams-grid">
+                    <div class="team-card">
+                        <img src="../img/volleyball-court.jpg" alt="Volleyball Court" class="team-image">
+                        <div class="team-info">
+                            <div class="details">
+                                <p class="team-name">Eagles</p>
+                                <p class="team-details">12.12.2024 16:00<br>Kraków 1</p>
+                            </div>
+                            <div class="team-actions">
+                                <p class="team-members">4/7</p>
+                                <button class="join-button" onclick="location.href='calendar.html'">Join</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <img src="../img/volleyball-court.jpg" alt="Volleyball Court" class="team-image">
+                        <div class="team-info">
+                            <div class="details">
+                                <p class="team-name">Dragons</p>
+                                <p class="team-details">14.12.2024 20:00<br>Kraków 1</p>
+                            </div>
+                            <div class="team-actions">
+                                <p class="team-members">6/7</p>
+                                <button class="join-button" onclick="location.href='calendar.html'">Join</button>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="../img/volleyball-court.jpg" alt="Volleyball Court" class="team-image">
+                        <div class="team-info">
+                            <div class="details">
+                                <p class="team-name">Anna's Team</p>
+                                <p class="team-details">12.12.2024 16:00<br>Kraków 1</p>
+                            </div>
+                            <div class="team-actions">
+                                <p class="team-members">2/7</p>
+                                <button class="join-button" onclick="location.href='calendar.html'">Join</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="../img/volleyball-court.jpg" alt="Volleyball Court" class="team-image">
+                        <div class="team-info">
+                            <div class="details">
+                                <p class="team-name">Grounders</p>
+                                <p class="team-details">22.12.2024 19:00<br>Kraków 1</p>
+                            </div>
+                            <div class="team-actions">
+                                <p class="team-members">5/7</p>
+                                <button class="join-button" onclick="location.href='calendar.html'">Join</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </body>
 </html>
