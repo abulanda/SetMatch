@@ -171,6 +171,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow-y: auto;
 }
 
 .form-container {
@@ -250,6 +251,7 @@ input[type="date"].form-input {
 
 
 .action-button {
+
     padding: 1em 2em;
     font-family: 'Jost', sans-serif;
     font-size: 1em;
