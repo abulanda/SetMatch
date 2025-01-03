@@ -112,6 +112,16 @@ body {
     background-color: #D79685;
     margin-top: 2em;
     margin-bottom: 2em;
+    object-fit: cover;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .profile-details {

@@ -46,7 +46,7 @@
                 </div>                
             </div>
             <div class="main-page">
-                <h2>public.still working on it :)</h2>
+                <h2>still working on it :)</h2>
             </div>
             
         </div>

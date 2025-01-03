@@ -16,4 +16,6 @@ Routing::get('signup2', 'DefaultController');
 Routing::get('temp', 'DefaultController');
 Routing::get('myteams', 'DefaultController');
 
+Routing::post('login', 'SecurityController');
+
 Routing::run($path);
