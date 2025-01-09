@@ -32,12 +32,12 @@
 
                     </div>
                     <div class="profile-details">
-                        <p>Josh</p>
-                        <p>Swift</p>
-                        <p>libero</p>
-                        <p>B</p>
-                        <p>Kraków</p>
-                        <p>#0001</p>
+                        <p> <?php echo isset($first_name) ? htmlspecialchars($first_name) : 'N/A'; ?></p>
+                        <p> <?php echo isset($last_name) ? htmlspecialchars($last_name) : 'N/A'; ?></p>
+                        <p> <?php echo isset($position) ? htmlspecialchars($position) : 'N/A'; ?></p>
+                        <p> Advancement: <?php echo isset($skill_level) ? htmlspecialchars($skill_level) : 'N/A'; ?></p>
+                        <p> <?php echo isset($city) ? htmlspecialchars($city) : 'N/A'; ?></p>
+                        <p> id: <?php echo isset($user_id) ? htmlspecialchars($user_id) : 'N/A'; ?></p>
                     </div>
                 </div>
                 <div class="buttons-container">

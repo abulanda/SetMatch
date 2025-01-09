@@ -2,6 +2,8 @@
 
 require_once 'source/controllers/DefaultController.php';
 require_once 'source/controllers/SecurityController.php';
+require_once 'source/controllers/RegisterController.php';
+
 
 class Routing {
 
@@ -15,11 +17,13 @@ class Routing {
       self::$routes[$url] = $view;
   }
 
-  public static function run ($url) {
+
+public static function run ($url) {
     $action = explode("/", $url)[0];
     if (!array_key_exists($action, self::$routes)) {
       die("Wrong url!");
     }
+
 
     $controller = self::$routes[$action];
     $object = new $controller;
@@ -27,4 +31,6 @@ class Routing {
 
     $object->$action();
   }
+
+
 }
