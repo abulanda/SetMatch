@@ -3,7 +3,7 @@
 require 'Routing.php';
 
 $path = trim($_SERVER['REQUEST_URI'], '/');
-$path = parse_url( $path, PHP_URL_PATH);
+$path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
 Routing::get('index', 'DefaultController');
@@ -16,12 +16,14 @@ Routing::get('signup1', 'DefaultController');
 Routing::get('signup2', 'DefaultController');
 Routing::get('temp', 'DefaultController');
 Routing::get('myteams', 'DefaultController');
-
 Routing::post('login', 'SecurityController');
-//Routing::get('login', 'SecurityController');
-
 Routing::post('register', 'RegisterController');
-
 Routing::get('logout', 'SecurityController');
+Routing::post('createTeamTransaction', 'DefaultController');
+Routing::post('createMatchTransaction', 'DefaultController');
+Routing::get('joinMatch', 'DefaultController');
+Routing::get('leaveMatch', 'DefaultController');
+
+
 
 Routing::run($path);

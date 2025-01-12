@@ -37,6 +37,7 @@ class SecurityController extends AppController {
             $_SESSION['city'] = $user['city'];
             $_SESSION['skill_level'] = $user['skill_level'];
             $_SESSION['position'] = $user['position'];
+            $_SESSION['profile_picture'] = $user['profile_picture'];
 
             header("Location: /home");
             exit();

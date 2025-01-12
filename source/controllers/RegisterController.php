@@ -16,19 +16,27 @@ class RegisterController
             $email = $_SESSION['signup_data']['email'];
             $password = password_hash($_SESSION['signup_data']['password'], PASSWORD_BCRYPT);
 
-
             $city = $_POST['city'];
             $advancement = $_POST['advancement'];
             $position = $_POST['position'];
             $profilePicture = null;
 
+            $targetDir = __DIR__ . '/../../uploads/';
+
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
 
             if (!empty($_FILES['profile-picture']['name'])) {
-                $targetDir = "uploads/";
-                $targetFile = $targetDir . basename($_FILES["profile-picture"]["name"]);
+                $uniqueName = sha1(uniqid()) . '.'
+                    . pathinfo($_FILES["profile-picture"]["name"], PATHINFO_EXTENSION);
+
+                $targetFile = $targetDir . $uniqueName;
+
                 if (move_uploaded_file($_FILES["profile-picture"]["tmp_name"], $targetFile)) {
-                    $profilePicture = $targetFile;
+                    $profilePicture = 'uploads/' . $uniqueName;
                 } else {
+                    echo "Error uploading file<br>";
                 }
             }
 
@@ -54,7 +62,6 @@ class RegisterController
                     ':position'        => $position,
                     ':profile_picture' => $profilePicture
                 ]);
-
 
                 header("Location: /home");
                 exit();
