@@ -88,15 +88,28 @@
                             onclick="location.href=\'joinMatch?match_id='.$matchId.'&team_id='.$teamId.'\'">
                             Join
                         </button>
-                    </div>
+
+        </div>
                 </div>
             </div>
             ';
                 }
             }
             ?>
+
+
+
+
+            <input type="text" id="searchInput" placeholder="Search match by team name or location" />
+
+            <div id="searchResults"></div>
+
+
+
+
         </div>
     </div>
 </div>
+<script src="public/js/home.js"></script>
 </body>
 </html>

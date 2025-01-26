@@ -38,8 +38,13 @@ class SecurityController extends AppController {
             $_SESSION['skill_level'] = $user['skill_level'];
             $_SESSION['position'] = $user['position'];
             $_SESSION['profile_picture'] = $user['profile_picture'];
+            $_SESSION['role'] = $user['role'];
 
-            header("Location: /home");
+            if ($_SESSION['role'] === 'ADMIN') {
+                header("Location: /admin");
+            } else {
+                header("Location: /home");
+            }
             exit();
         } catch (PDOException $e) {
             return $this->render('login', ['messages' => ['Database error: ' . $e->getMessage()]]);

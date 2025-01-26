@@ -176,13 +176,14 @@ button {
 
 
 .main-page {
-    width: 80%; 
-    height: calc(100vh - 10vh); 
+    width: 80%;
+    max-height: calc(100vh - 10vh);
     background-color: #ffffff;
-    padding: 2em;
+    padding-left: 2em;
     overflow-y: auto;
-    z-index: 0; 
+    z-index: 0;
     position: relative;
+    box-sizing: border-box;
 }
 
 .main-header {
@@ -278,7 +279,6 @@ button {
 .join-button:hover {
     background-color: #c58476;
 }
-
 
 
 

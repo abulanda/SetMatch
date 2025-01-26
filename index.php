@@ -23,6 +23,12 @@ Routing::post('createTeamTransaction', 'DefaultController');
 Routing::post('createMatchTransaction', 'DefaultController');
 Routing::get('joinMatch', 'DefaultController');
 Routing::get('leaveMatch', 'DefaultController');
+Routing::get('searchMatchesAjax', 'DefaultController');
+
+Routing::get('admin', 'AdminController');
+Routing::get('deleteUser', 'AdminController');
+Routing::get('deleteTeam', 'AdminController');
+Routing::get('deleteMatch', 'AdminController');
 
 
 
