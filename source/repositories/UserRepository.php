@@ -95,7 +95,16 @@ class UserRepository
                 ':role'  => $role
             ]);
         } catch (PDOException $e) {
-            echo "Błąd podczas tworzenia użytkownika: " . $e->getMessage();
+            echo "Error " . $e->getMessage();
         }
     }
+
+    public function userExistsById(int $id): bool
+    {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE user_id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+
 }

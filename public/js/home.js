@@ -26,27 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function searchMatchesAjax(query) {
         fetch(`/searchMatchesAjax?query=${encodeURIComponent(query)}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 displayMatches(data);
+                resultsContainer.style.display = "block";
             })
             .catch(err => {
                 console.error("Error during fetch:", err);
                 resultsContainer.innerHTML = "<p>Error occurred while searching.</p>";
+                resultsContainer.style.display = "block";
             });
     }
 
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.trim();
+
         if (query.length > 0) {
             searchMatchesAjax(query);
         } else {
             resultsContainer.innerHTML = "";
+            resultsContainer.style.display = "none";
         }
     });
 

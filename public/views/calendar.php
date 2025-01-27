@@ -53,6 +53,15 @@
     </div>
     <div class="main-page">
         <h1 class="page-title">Matches Summary</h1>
+        <?php if (isset($messages) && !empty($messages)): ?>
+            <div class="messages">
+                <?php foreach($messages as $msg): ?>
+                    <p>
+                        <?= htmlspecialchars($msg) ?>
+                    </p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
         <div class="matches-summary">
             <?php if (isset($userMatches)) {
                 foreach ($userMatches as $m) {

@@ -280,7 +280,9 @@ button {
     background-color: #c58476;
 }
 
-
+#searchResults {
+    display: none;
+}
 
 @media only screen and (max-device-width: 600px) {
     body {

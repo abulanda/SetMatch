@@ -28,5 +28,7 @@
             </form>
         </div>
     </div>
+    <script src="public/js/signup.js"></script>
+
 </body> 
 </html>

@@ -87,6 +87,9 @@ class DefaultController extends AppController
 
         $userMatches = $this->matchRepository->getUserMatches($_SESSION['user_id']);
 
+        $messages = $_SESSION['messages'] ?? [];
+        unset($_SESSION['messages']);
+
         $userData = [
             'user_id'          => $_SESSION['user_id'],
             'nickname'         => $_SESSION['nickname'] ?? 'Guest',
@@ -96,7 +99,8 @@ class DefaultController extends AppController
             'first_name'       => $_SESSION['first_name'] ?? '',
             'last_name'        => $_SESSION['last_name'] ?? '',
             'profile_picture'  => $_SESSION['profile_picture'] ?? '',
-            'userMatches'      => $userMatches
+            'userMatches'      => $userMatches,
+            'messages'         => $messages
         ];
 
         $this->render('calendar', $userData);
@@ -199,6 +203,47 @@ class DefaultController extends AppController
             }
         }
 
+        require_once __DIR__ . '/../repositories/UserRepository.php';
+        $userRepo = new \repositories\UserRepository();
+
+        $errors = [];
+        $seen = [];
+
+        foreach ($playerIds as $index => $pid) {
+            if (in_array($pid, $seen)) {
+                $errors[] = "User with ID=$pid is already listed in your team form!";
+            } else {
+                $seen[] = $pid;
+            }
+
+            if ($index > 0 && $pid == $captainUserId) {
+                $errors[] = "You cannot add yourself again!";
+            }
+
+            if ($pid === 14) {
+                $errors[] = "You cannot add admin (ID=14) to a team!";
+            }
+        }
+
+        foreach ($playerIds as $pid) {
+            if (!$userRepo->userExistsById($pid)) {
+                $errors[] = "User with ID=$pid does not exist in the database!";
+            }
+        }
+
+        if (!empty($errors)) {
+            return $this->render('addteam1', [
+                'messages'        => $errors,
+                'user_id'         => $_SESSION['user_id'],
+                'first_name'      => $_SESSION['first_name'],
+                'last_name'       => $_SESSION['last_name'],
+                'position'        => $_SESSION['position'],
+                'skill_level'     => $_SESSION['skill_level'],
+                'city'            => $_SESSION['city'],
+                'profile_picture' => $_SESSION['profile_picture'],
+            ]);
+        }
+
         try {
             $this->teamRepository->createTeamWithPlayers(
                 $teamName,
@@ -263,15 +308,17 @@ class DefaultController extends AppController
         try {
             $countPlayers = $this->teamRepository->countPlayersInTeam($teamId);
             if ($countPlayers >= 7) {
-                echo "Team is already full!";
-                return;
+                $_SESSION['messages'][] = "Team is already full!";
+                header("Location: /calendar");
+                exit();
             }
 
             $position = $this->getUserPosition($userId);
 
             if ($this->teamRepository->isUserInTeam($userId, $teamId)) {
-                echo "You are already in this team!";
-                return;
+                $_SESSION['messages'][] = "You are already in this team!";
+                header("Location: /calendar");
+                exit();
             }
 
             $this->teamRepository->addUserToTeam($userId, $teamId, $position);
@@ -348,6 +395,24 @@ class DefaultController extends AppController
 
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($results);
+    }
+
+    public function checkUserExistsAjax()
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("HTTP/1.1 401 Unauthorized");
+            echo json_encode(["error" => "Unauthorized"]);
+            exit();
+        }
+
+        $userId = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
+
+        $userRepo = new UserRepository();
+        $exists = $userRepo->userExistsById($userId);
+
+        header('Content-Type: application/json');
+        echo json_encode(["exists" => $exists]);
     }
 
 

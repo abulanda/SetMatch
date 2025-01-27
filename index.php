@@ -30,6 +30,8 @@ Routing::get('deleteUser', 'AdminController');
 Routing::get('deleteTeam', 'AdminController');
 Routing::get('deleteMatch', 'AdminController');
 
+Routing::get('checkUserExistsAjax','DefaultController');
+
 
 
 Routing::run($path);

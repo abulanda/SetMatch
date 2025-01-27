@@ -66,8 +66,19 @@
                 <option value="Middle blocker"  <?php echo ($position === 'Middle blocker')  ? 'selected' : ''; ?>>Middle blocker</option>
             </select>
 
+
+
             <button type="submit" class="form-button">Continue</button>
             </div>
+
+            <?php if (isset($messages) && !empty($messages)): ?>
+                <div class="error-messages">
+                    <?php foreach ($messages as $msg): ?>
+                        <p><?php echo htmlspecialchars($msg); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
             <div class="players-list">
                 <h2>Wanna play with friends? Add them now!</h2>
                 <p>Just fill their ID and optionally position</p>
@@ -77,7 +88,7 @@
                         <span>#<?php echo $i; ?></span>
                         <input type="text" placeholder="id" class="player-input" name="player_id_<?php echo $i; ?>">
                         <select name="player_position_<?php echo $i; ?>" class="player-input">
-                            <option value="">Auto from DB</option>
+                            <option value="">Copy from the user profile</option>
                             <option value="Libero">Libero</option>
                             <option value="Setter">Setter</option>
                             <option value="Outside hitter">Outside hitter</option>
@@ -90,5 +101,6 @@
         </form>
     </div>
 </div>
+<script src="public/js/addteam.js"></script>
 </body>
 </html>
