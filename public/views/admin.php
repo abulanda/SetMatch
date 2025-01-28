@@ -35,13 +35,15 @@
             </tr>
             <?php if (isset($usersList)): ?>
                 <?php foreach($usersList as $u): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($u['user_id']); ?></td>
-                        <td><?= htmlspecialchars($u['nickname']); ?></td>
-                        <td><?= htmlspecialchars($u['email']); ?></td>
-                        <td><?= htmlspecialchars($u['role'] ?? 'USER'); ?></td>
-                        <td><a href="deleteUser?id=<?= $u['user_id'] ?>">Delete</a></td>
-                    </tr>
+                    <?php if ($u['user_id'] != 14): // Pomijamy admina ?>
+                        <tr>
+                            <td><?= htmlspecialchars($u['user_id']); ?></td>
+                            <td><?= htmlspecialchars($u['nickname']); ?></td>
+                            <td><?= htmlspecialchars($u['email']); ?></td>
+                            <td><?= htmlspecialchars($u['role'] ?? 'USER'); ?></td>
+                            <td><a href="deleteUser?id=<?= $u['user_id'] ?>">Delete</a></td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
         </table>

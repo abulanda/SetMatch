@@ -63,32 +63,77 @@ body {
     background-color: #f2f2f2;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 .profile-details {
-    text-align: left;
+    text-align: center;
     width: 100%;
-    padding-left: 4em;
 }
 
 .profile-details p {
     font-family: 'Jost', sans-serif;
-    font-size: 1em;
+    font-size: 1.2em;
     color: #555555;
+    font-weight: bold;
     margin: 1em 0;
-    text-align: left;
 }
+
+
 
 .main-page {
     width: 80%;
     max-height: calc(100vh - 10vh);
     background-color: #ffffff;
-    padding-left: 2em;
-    padding-bottom: 2em;
+    padding:1em;
     overflow-y: auto;
     z-index: 0;
     position: relative;
     box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    text-align: left;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #D79685;
+    color: #fff;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    transition: 0.3s;
+}
+
+table a {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table a:hover {
+    text-decoration: underline;
 }
 
 @media only screen and (max-device-width: 600px) {
@@ -152,4 +197,15 @@ body {
         box-sizing: border-box;
     }
 
+    table {
+        font-size: 2em;
+    }
+
+    table th, table td {
+        padding: 6px;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
 }
