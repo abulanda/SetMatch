@@ -165,13 +165,14 @@ button {
 
 
 .main-page {
-    width: 80%; 
-    height: calc(100vh - 10vh); 
+    width: 80%;
+    height: calc(100vh - 10vh);
     background-color: #ffffff;
-    padding: 2em;
+    padding-left: 1.5em;
     overflow-y: auto;
-    z-index: 0; 
+    z-index: 0;
     position: relative;
+    box-sizing: border-box;
 }
 
 .page-title {
@@ -185,6 +186,7 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1em;
+    padding-right: 1em;
 }
 
 .match-card {

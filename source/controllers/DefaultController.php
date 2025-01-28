@@ -391,7 +391,7 @@ class DefaultController extends AppController
 
         $query = isset($_GET['query']) ? $_GET['query'] : '';
 
-        $results = $this->matchRepository->searchOpenMatches($query);
+        $results = $this->matchRepository->getOpenMatches($query);
 
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($results);

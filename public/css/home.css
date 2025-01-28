@@ -177,9 +177,9 @@ button {
 
 .main-page {
     width: 80%;
-    max-height: calc(100vh - 10vh);
+    height: calc(100vh - 10vh);
     background-color: #ffffff;
-    padding-left: 2em;
+    padding-left: 1.5em;
     overflow-y: auto;
     z-index: 0;
     position: relative;
@@ -190,14 +190,14 @@ button {
     font-family: 'Jost', sans-serif;
     font-size: 1.5em;
     color: #b58989;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .teams-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 2em;
-    padding: 1em 0;
+    padding-right:1em;
     margin-bottom: 2em;
 }
 

@@ -36,16 +36,22 @@ class MatchRepository
             JOIN teams t       ON t.team_id = mt.team_id
             JOIN user_teams ut ON ut.team_id = t.team_id
             WHERE ut.user_id = :uid
+              AND (
+                m.match_date > CURRENT_DATE
+                OR (
+                    m.match_date = CURRENT_DATE
+                    AND m.match_time >= CURRENT_TIME
+                )
+              )
             ORDER BY m.match_date, m.match_time
         ");
         $stmt->execute([':uid' => $userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 
-    public function getOpenMatches()
+    public function getOpenMatches($query = null)
     {
-
-        $stmt = $this->pdo->query("
+        $sql = "
         SELECT m.match_id,
                t.team_id,
                t.team_name,
@@ -69,12 +75,30 @@ class MatchRepository
             m.match_date > CURRENT_DATE
             OR (
                 m.match_date = CURRENT_DATE
-                AND m.match_time > CURRENT_TIME
+                AND m.match_time >= CURRENT_TIME
             )
         )
-        ORDER BY m.match_date, m.match_time
-    ");
+    ";
 
+        if ($query) {
+            $sql .= " 
+          AND (
+            t.team_name ILIKE :search
+            OR m.location ILIKE :search
+          )
+        ";
+        }
+
+        $sql .= "ORDER BY m.match_date, m.match_time";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        if ($query) {
+            $searchParam = '%'.$query.'%';
+            $stmt->bindParam(':search', $searchParam);
+        }
+
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 
@@ -114,41 +138,6 @@ class MatchRepository
             }
             throw new \Exception("Error creating match: " . $e->getMessage());
         }
-    }
-
-    public function searchOpenMatches($query)
-    {
-        $stmt = $this->pdo->prepare("
-        SELECT m.match_id,
-               t.team_name,
-               m.match_date,
-               m.match_time,
-               m.location,
-               (
-                   SELECT COUNT(*)
-                   FROM user_teams
-                   WHERE user_teams.team_id = t.team_id
-               ) AS participants
-        FROM matches m
-        JOIN match_teams mt ON m.match_id = mt.match_id
-        JOIN teams t ON t.team_id = mt.team_id
-        WHERE
-            (
-                SELECT COUNT(*)
-                FROM user_teams
-                WHERE user_teams.team_id = t.team_id
-            ) < 7
-            AND (
-                t.team_name ILIKE :search
-                OR m.location ILIKE :search
-            )
-        ORDER BY m.match_date, m.match_time
-    ");
-
-        $searchParam = '%' . $query . '%';
-        $stmt->execute([':search' => $searchParam]);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results ?: [];
     }
 
 
